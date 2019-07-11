@@ -32,13 +32,12 @@
               return true;
             } else {
               tabSize = $el[`client${firstUpperCase(sizeName)}`];
-              const tabStyles = window.getComputedStyle($el);
+              let tabStyles = window.getComputedStyle($el);
               if (sizeName === 'width' && this.tabs.length > 1) {
+                // tabSize -= (index === 0 || index === this.tabs.length - 1) ? 20 : 40;
                 tabSize -= parseFloat(tabStyles.paddingLeft) + parseFloat(tabStyles.paddingRight);
               }
-              if (sizeName === 'width') {
-                offset += parseFloat(tabStyles.paddingLeft);
-              }
+              offset += parseFloat(tabStyles.paddingLeft);
               return false;
             }
           });
